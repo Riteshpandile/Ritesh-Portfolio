@@ -66,7 +66,7 @@ npm run preview
 **Ritesh Pandile** — *Flutter & Mobile App Developer*
 - **GitHub**: [@Riteshpandile](https://github.com/Riteshpandile)
 - **LinkedIn**: [Ritesh Pandile](https://linkedin.com/in/ritesh-pandile)
-- **Email**: [ritesh.pandile@portalwiz.com](mailto:ritesh.pandile@portalwiz.com)
+- **Email**: [ritesh.pandile@portalwiz.com](mailto:riteshpandile@gmail.com)
 
 ---
 
