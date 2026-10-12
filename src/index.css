@@ -2081,16 +2081,22 @@ button {
 /* Layers Visualizer */
 .architecture-layers-grid {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   gap: 36px;
   align-items: stretch;
   margin-bottom: 56px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .layers-nav-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .layers-nav-heading {
@@ -2112,6 +2118,10 @@ button {
   color: var(--ink);
   text-align: left;
   transition: all var(--transition-fast);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .layer-nav-item:hover {
@@ -2137,12 +2147,14 @@ button {
 
 .layer-nav-text {
   flex: 1;
+  min-width: 0;
 }
 
 .layer-badge-pill {
   font-size: 0.74rem;
   color: var(--ink-muted);
   font-family: var(--f-mono);
+  display: block;
 }
 
 .layer-name {
@@ -2156,6 +2168,7 @@ button {
   color: var(--ink-muted);
   opacity: 0.5;
   transition: transform var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .layer-nav-item.selected .layer-arrow {
@@ -2173,12 +2186,24 @@ button {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .layer-detail-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.header-meta {
+  min-width: 0;
+  flex: 1;
 }
 
 .layer-tag {
@@ -2193,6 +2218,7 @@ button {
 
 .layer-detail-title {
   font-size: 1.6rem;
+  word-break: break-word;
 }
 
 .layer-indicator {
@@ -2200,18 +2226,23 @@ button {
   height: 14px;
   border-radius: 50%;
   box-shadow: 0 0 12px currentColor;
+  flex-shrink: 0;
 }
 
 .layer-detail-desc {
   font-size: 1.02rem;
   color: var(--ink-secondary);
   line-height: 1.6;
+  word-break: break-word;
 }
 
 .layer-elements-block {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .elements-title {
@@ -2226,6 +2257,9 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .element-chip {
@@ -2238,6 +2272,9 @@ button {
   border: 1px solid var(--line);
   font-size: 0.86rem;
   font-weight: 500;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-break: break-word;
 }
 
 .layer-code-block {
@@ -2246,6 +2283,10 @@ button {
   border-radius: var(--radius-md);
   overflow: hidden;
   margin-top: 10px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .code-block-header {
@@ -2257,6 +2298,8 @@ button {
   font-family: var(--f-mono);
   font-size: 0.74rem;
   color: var(--ink-muted);
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .layer-code-pre {
@@ -2267,6 +2310,16 @@ button {
   line-height: 1.6;
   color: var(--code-ink);
   overflow-x: auto;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.layer-code-pre code {
+  display: block;
+  min-width: 100%;
+  width: max-content;
 }
 
 /* Architecture Pillars */
@@ -3973,7 +4026,21 @@ button {
   .projects-showcase-grid,
   .architecture-layers-grid,
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .architecture-layers-grid {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    gap: 24px;
+  }
+
+  .layers-nav-list,
+  .layer-detail-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .lifecycle-cards-grid,
@@ -4184,13 +4251,109 @@ button {
     gap: 12px;
   }
 
+  .architecture-layers-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .layers-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .layer-nav-item {
+    padding: 12px 14px;
+    gap: 12px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .layer-nav-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+
+  .layer-nav-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .layer-name {
+    font-size: 0.98rem;
+    white-space: normal;
+  }
+
+  .layer-badge-pill {
+    font-size: 0.7rem;
+    white-space: normal;
+  }
+
+  .layer-arrow {
+    flex-shrink: 0;
+  }
+
   .layer-detail-card {
-    padding: 24px 20px;
+    padding: 20px 16px;
     border-radius: 20px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    gap: 16px;
   }
 
   .layer-detail-title {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
+  }
+
+  .layer-detail-desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .elements-tags {
+    gap: 6px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .element-chip {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    border-radius: 8px;
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .layer-code-block {
+    margin-top: 8px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .layer-code-pre {
+    padding: 12px 10px;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .lifecycle-cards-grid {
@@ -4561,35 +4724,80 @@ button {
   }
 
   /* Architecture Layers */
+  .architecture-layers-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
   .layer-nav-item {
-    padding: 12px 14px;
+    padding: 10px 12px;
     gap: 10px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .layer-nav-icon {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
   }
 
   .layer-name {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
+  }
+
+  .layer-badge-pill {
+    font-size: 0.68rem;
   }
 
   .layer-detail-card {
-    padding: 18px 14px;
+    padding: 16px 14px;
+    border-radius: 16px;
+    gap: 14px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .layer-detail-title {
     font-size: 1.25rem;
   }
 
+  .layer-tag {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+  }
+
   .layer-detail-desc {
     font-size: 0.88rem;
   }
 
-  .layer-code-pre {
-    padding: 12px 10px;
+  .elements-title {
+    font-size: 0.78rem;
+  }
+
+  .elements-tags {
+    gap: 5px;
+  }
+
+  .element-chip {
+    padding: 5px 8px;
     font-size: 0.74rem;
+  }
+
+  .code-block-header {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+
+  .layer-code-pre {
+    padding: 10px 8px;
+    font-size: 0.72rem;
   }
 
   /* Carousel Cards */
