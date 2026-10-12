@@ -15,7 +15,7 @@ export const DEVELOPER_INFO = {
     { label: "Professional Experience", value: "1.10+ Years", sub: "Production engineering" },
     { label: "Production Apps", value: "6+ Apps", sub: "Across 6 diverse domains" },
     { label: "Platform Delivery", value: "Android + iOS", sub: "From build to store release" },
-    // { label: "Module Ownership", value: "100%", sub: "Full development lifecycle" }
+    { label: "Module Ownership", value: "100%", sub: "Full development lifecycle" }
   ],
   domains: [
     { name: "Job Portals", icon: "Briefcase", desc: "Recruitment & Career Platforms", color: "blue" },

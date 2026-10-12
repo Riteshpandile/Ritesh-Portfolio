@@ -44,15 +44,35 @@ export const ContinuousCarousel = ({
       const card1 = sliderRef.current.children[1];
       if (card0 && card1) {
         const step = card1.offsetLeft - card0.offsetLeft;
-        if (step > 0) setCardStep(step);
-      } else if (card0) {
-        setCardStep(card0.offsetWidth + 26);
+        if (step > 0) {
+          setCardStep(step);
+          return;
+        }
+      }
+      if (card0) {
+        const computedStyle = window.getComputedStyle(sliderRef.current);
+        const gap = parseFloat(computedStyle.gap) || 16;
+        setCardStep(card0.offsetWidth + gap);
       }
     };
 
     measureStep();
+    const resizeObserver = typeof ResizeObserver !== "undefined"
+      ? new ResizeObserver(() => measureStep())
+      : null;
+
+    if (resizeObserver && sliderRef.current) {
+      resizeObserver.observe(sliderRef.current);
+    }
+
     window.addEventListener("resize", measureStep);
-    return () => window.removeEventListener("resize", measureStep);
+    window.addEventListener("orientationchange", measureStep);
+
+    return () => {
+      if (resizeObserver) resizeObserver.disconnect();
+      window.removeEventListener("resize", measureStep);
+      window.removeEventListener("orientationchange", measureStep);
+    };
   }, [displayItems.length, activeFilter]);
 
   // Reset to first slide cleanly when active filter changes

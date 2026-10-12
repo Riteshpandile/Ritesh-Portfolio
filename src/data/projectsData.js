@@ -31,7 +31,7 @@ export const PROJECTS_DATA = [
   },
   {
     id: "lms",
-    name: "RRPL LMS",
+    name: "LMS",
     subtitle: "Learning Management System",
     short: "R",
     domain: "Education & E-Learning",
